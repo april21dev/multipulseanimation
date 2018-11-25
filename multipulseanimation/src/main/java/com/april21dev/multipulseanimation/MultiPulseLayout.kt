@@ -123,7 +123,6 @@ class MultiPulseLayout : ConstraintLayout {
             val pulseDrawable = PulseDrawable(mPurseColor, mPaintStyle, mStrokeWidth, mStartRadius)
             mPulseDrawableList.add(pulseDrawable)
 
-            //한 놈한테만 콜백 넘겨 (모두 넘기면, callback 이 너무 많이 불려)
             if (i == mPurseCount) {
                 pulseDrawable.callback = mDrawableCallback
             }

@@ -51,11 +51,11 @@ repositories {
 }
 
 publish {
-    userOrg = 'april21'
+    userOrg = 'april21dev'
     groupId = 'com.april21dev.multipulseanimation'
     artifactId = 'MultiPulseAnimation'
     publishVersion = '1.0.0'
     desc = 'Android Multiple Pulse Animation'
-    website = 'https://github.com/novoda/bintray-release'
+    website = 'https://github.com/april21dev/multipulseanimation'
 }
 

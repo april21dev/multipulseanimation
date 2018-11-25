@@ -22,13 +22,23 @@ class MainActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
 
+        //Set Attributes
         multi_pulse_layout
             .setDuration(2000)
-            .setPaintStyle(paintStyle = Paint.Style.FILL)
+            .setPaintStyle(paintStyle = Paint.Style.STROKE)
             .setPurseCount(5)
             .setStartRadius(100f)
+            .setStrokeWidth(10f)
             .setPurseColor(Color.rgb(255, 0, 0))
-            .start()
+
+        //Start Animation
+        multi_pulse_layout.start()
+
+        //Stop Animation (Doesn't remove purse drawables from view)
+        multi_pulse_layout.stop()
+
+        //Clear Animation (Remove purse drawables from view)
+        multi_pulse_layout.clear()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
