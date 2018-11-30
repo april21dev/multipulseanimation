@@ -1,34 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:layout_height="match_parent">
 
-    <android.support.design.widget.AppBarLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:theme="@style/AppTheme.AppBarOverlay">
+    <com.april21dev.multipulseanimation.MultiPulseLayout
+            android:id="@+id/multi_pulse_layout"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"
+            app:mpa_duration="1000"
+            app:mpa_paint_style="fill"
+            app:mpa_purse_color="#000000"
+            app:mpa_purse_count="1"
+            app:mpa_start_radius="0dp"
+            app:mpa_stroke_width="0dp">
 
-        <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/AppTheme.PopupOverlay"/>
+        <ImageView
+                android:id="@+id/alarm_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/ic_airplanemode_active_black_24dp"/>
+    </com.april21dev.multipulseanimation.MultiPulseLayout>
 
-    </android.support.design.widget.AppBarLayout>
-
-    <include layout="@layout/content_main"/>
-
-    <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
+    <TextView
+            android:id="@+id/count_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@android:drawable/ic_dialog_email"/>
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:text="Purse Count: 1"
+            android:layout_marginStart="20dp"
+            app:layout_constraintTop_toBottomOf="@id/multi_pulse_layout"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-</android.support.design.widget.CoordinatorLayout>
+    <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/purse_count_seek_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/count_label"
+            android:max="10"
+            android:min="1"
+            android:progress="1"
+            android:layout_marginTop="2dp"/>
+
+    <TextView
+            android:id="@+id/duration_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:text="Duration: 1000ms"
+            android:layout_marginStart="20dp"
+            app:layout_constraintTop_toBottomOf="@id/purse_count_seek_bar"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/duration_seek_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/duration_label"
+            android:max="10000"
+            android:min="1000"
+            android:progress="1000"
+            android:layout_marginTop="2dp"/>
+
+    <TextView
+            android:id="@+id/start_radius_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:text="Start Radius: 0dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintTop_toBottomOf="@id/duration_seek_bar"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/start_radius_seek_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/start_radius_label"
+            android:max="100"
+            android:min="0"
+            android:progress="1"
+            android:layout_marginTop="2dp"/>
+
+    <TextView
+            android:id="@+id/purse_color_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:text="Purse Color"
+            android:layout_marginStart="20dp"
+            app:layout_constraintTop_toBottomOf="@id/start_radius_seek_bar"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/purse_color_seek_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/purse_color_label"
+            android:max="1791"
+            android:min="0"
+            android:progress="0"
+            android:layout_marginTop="2dp"/>
+
+    <TextView
+            android:id="@+id/stroke_width_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:text="Stroke Width: 0dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintTop_toBottomOf="@id/purse_color_seek_bar"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/stroke_width_seek_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/stroke_width_label"
+            android:max="50"
+            android:min="0"
+            android:progress="0"
+            android:layout_marginTop="2dp"/>
+
+    <TextView
+            android:id="@+id/paint_style_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:text="Paint Style: fill"
+            android:layout_marginStart="20dp"
+            app:layout_constraintTop_toBottomOf="@id/stroke_width_seek_bar"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    <android.support.v7.widget.SwitchCompat
+            android:id="@+id/paint_style_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/paint_style_label"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

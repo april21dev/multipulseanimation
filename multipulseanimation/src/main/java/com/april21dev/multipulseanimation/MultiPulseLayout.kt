@@ -22,10 +22,10 @@ import android.util.AttributeSet
  * It can have child views and purses will be drawn under child views.
  *
  */
-class MultiPulseLayout : ConstraintLayout {
-    constructor(context: Context) : super(context)
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+class MultiPulseLayout(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
+    ConstraintLayout(context, attrs, defStyleAttr) {
+    constructor(context: Context) : this(context, null)
+    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
 
     private val mDummyAnimTarget = DummyAnimTarget()
     private val mPulseDrawableList = mutableListOf<PulseDrawable>()
@@ -37,6 +37,26 @@ class MultiPulseLayout : ConstraintLayout {
     private var mPaintStyle = Paint.Style.FILL
     private var mStartRadius = 0f
     private var mStrokeWidth = 0f
+
+    init {
+        attrs?.let {
+            val styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.MultiPulseLayout)
+            mPurseCount = styledAttributes.getInt(R.styleable.MultiPulseLayout_mpa_purse_count, 1)
+            mDuration = styledAttributes.getInt(R.styleable.MultiPulseLayout_mpa_duration, 1000).toLong()
+            mPurseColor = styledAttributes.getColor(R.styleable.MultiPulseLayout_mpa_purse_color, Color.RED)
+            mStartRadius = styledAttributes.getDimension(R.styleable.MultiPulseLayout_mpa_start_radius, 0f)
+            mStrokeWidth = styledAttributes.getDimension(R.styleable.MultiPulseLayout_mpa_stroke_width, 0f)
+            mPaintStyle = styledAttributes.getInt(R.styleable.MultiPulseLayout_mpa_paint_style, 0).let { paintStyle ->
+                when (paintStyle) {
+                    0 -> Paint.Style.FILL
+                    1 -> Paint.Style.STROKE
+                    else -> Paint.Style.FILL
+                }
+            }
+
+            styledAttributes.recycle()
+        }
+    }
 
     /**
      * Start animations
@@ -119,11 +139,11 @@ class MultiPulseLayout : ConstraintLayout {
         clear()
 
         val animatorList = mutableListOf<Animator>()
-        for (i in 1..mPurseCount) {
+        for (i in 0 until mPurseCount) {
             val pulseDrawable = PulseDrawable(mPurseColor, mPaintStyle, mStrokeWidth, mStartRadius)
             mPulseDrawableList.add(pulseDrawable)
 
-            if (i == mPurseCount) {
+            if (i == 0) {
                 pulseDrawable.callback = mDrawableCallback
             }
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MultiPulseLayout">
+        <attr name="mpa_purse_count" format="integer"/>
+        <attr name="mpa_duration" format="integer"/>
+        <attr name="mpa_purse_color" format="color"/>
+        <attr name="mpa_start_radius" format="dimension"/>
+        <attr name="mpa_stroke_width" format="dimension"/>
+        <attr name="mpa_paint_style" format="enum">
+            <enum name="fill" value="0"/>
+            <enum name="stroke" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>
