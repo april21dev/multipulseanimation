@@ -2,22 +2,41 @@
 
 
 <br/><br/>
-![Screenshot](https://github.com/april21dev/multipulseanimation/blob/master/Screenshot_fill.png)
+[![https://img.youtube.com/vi/NpsAhUKhGQE/hqdefault.jpg](http://img.youtube.com/vi/NpsAhUKhGQE/0.jpg)](http://www.youtube.com/watch?v=NpsAhUKhGQE "Multipulse Animation")
 <br/><br/>
-![Screenshot](https://github.com/april21dev/multipulseanimation/blob/master/Screenshot_stroke.png)
-
-
 
 
 ## Gradle
 ```gradle
 dependencies {
-    implementation 'com.april21dev.multipulseanimation:MultiPulseAnimation:1.0.0'
+    implementation 'com.april21dev.multipulseanimation:MultiPulseAnimation:1.0.1'
 }
 ```
 
 
 ## How To Use
+### XML
+```xml
+<com.april21dev.multipulseanimation.MultiPulseLayout
+            android:id="@+id/multi_pulse_layout"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"
+            app:mpa_duration="1000"
+            app:mpa_paint_style="fill"
+            app:mpa_purse_color="#000000"
+            app:mpa_purse_count="3"
+            app:mpa_start_radius="10dp"
+            app:mpa_stroke_width="5dp"/>
+```
+
+### Kotlin
+You can set attributes programmatically also.
+
+Just start, stop, or clear
 ```java
         //Set Attributes
         multi_pulse_layout
@@ -42,7 +61,7 @@ dependencies {
 
 ## License 
  ```code
-Copyright 2017 april21dev
+Copyright 2018 april21dev
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
